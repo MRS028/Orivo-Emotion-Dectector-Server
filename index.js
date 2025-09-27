@@ -13,11 +13,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://orivo-emotion-detector.netlify.app",
+      "https://orivo-emotion-detector.netlify.app"
     ],
     credentials: true,
   })
 );
+
+
 app.use(morgan("dev"));
 app.use(express.json());
 
@@ -189,6 +191,7 @@ app.delete("/api/emotions", async (req, res) => {
     res.status(500).json({ error: "Failed to clear emotions" });
   }
 });
+// Add this at the end of your routes (before starting the server)
 // ==== Start Server ====
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
